@@ -3,91 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niharika K Thilak | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Niharika K Thilak | CSE Portfolio</title>
+    <!-- Use a modern, clean font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Properties for easy color changes */
+        :root {
+            --primary-color: #FF69B4; /* Hot Pink/Deep Pink - for highlights */
+            --secondary-color: #111111; /* Deep Black - for background */
+            --text-color: #f4f4f4; /* Light text for contrast */
+            --accent-color: #e6e6e6; /* Lighter shade for borders/details */
+        }
+
+        /* Global Styles & Cherry Blossom Background Setup */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            
+            /* Cherry Blossom Background Setup: Requires a file named 'cherry-blossom-long.png' in the root folder */
+            background-image: url('cherry-blossom-long.png'), 
+                              linear-gradient(135deg, var(--secondary-color) 0%, #000000 100%);
+            background-size: cover; /* Cover the whole area */
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Makes the background stay put while scrolling */
+        }
+
+        /* Utility classes for content alignment */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: rgba(0, 0, 0, 0.95); /* Nearly opaque black */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            transition: color 0.3s, background-color 0.3s;
+            border-radius: 8px;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+        }
+
+        /* Hero Section (Introduction) */
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 120px 20px;
+            text-align: left;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8em;
+            margin-bottom: 0.1em;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            color: var(--accent-color);
+        }
+
+        .hero-image img {
+            width: 250px; /* Adjust size */
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--primary-color);
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.7);
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 30px;
+            margin-top: 30px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 35px;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.6);
+            background-color: #ff85c1; /* Lighter pink on hover */
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 20px;
+            background-color: rgba(0, 0, 0, 0.75); /* Slightly transparent box for readability */
+            border-radius: 20px;
+            margin: 40px auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 105, 180, 0.1);
+            max-width: 1000px;
+        }
+
+        /* Separator */
+        .separator {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+            margin: 60px auto;
+            max-width: 70%;
+            opacity: 0.7;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background-color: rgba(255, 105, 180, 0.2); /* Pink transparency */
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid var(--primary-color);
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: default;
+        }
+
+        .skill-card:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Projects */
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            margin-top: 25px;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 10px;
+            transition: background-color 0.3s, border-left-width 0.3s;
+        }
+
+        .project-card:hover {
+            background-color: rgba(255, 105, 180, 0.1);
+            border-left-width: 10px;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .project-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .project-card a:hover {
+            border-color: var(--primary-color);
+        }
+
+        /* Footer and Social Links */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            border-top: 1px solid rgba(255, 105, 180, 0.2);
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--text-color);
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 20px;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1.1em;
+            }
+            nav ul {
+                display: none; /* Simple mobile adjustment */
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">Niharika</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">Niharika K Thilak</div>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h1>Hi, I'm Niharika K Thilak</h1>
-                <p>Computer Science Student | Aspiring Developer | Vidya Academy Of Science and Technology, Thrissur</p>
-                <a href="#projects" class="cta-button">View My Code</a>
-            </div>
-            <div class="hero-image">
-                <img src="your-photo.jpg" alt="Niharika K Thilak">
-            </div>
-        </section>
+        <div class="container">
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <h1>Code meets Craft.</h1>
+                    <p>
+                        I'm Niharika, a Computer Science student at **VAST Thrissur**.
+                        My passion is turning complex challenges into clean, efficient code.
+                    </p>
+                    <a href="#projects" class="cta-button">Explore My Codebase</a>
+                </div>
+                <div class="hero-image">
+                    <!-- CHANGE THIS URL -->
+                    <img src="https://placehold.co/250x250/FF69B4/111111?text=Your+Photo" alt="Niharika K Thilak">
+                </div>
+            </section>
+        </div>
         
-        <hr>
+        <div class="separator"></div>
 
         <section id="about" class="content-section">
-            <h2>About Me 🌸</h2>
-            <p>
-                I am a passionate Computer Science and Engineering student at **Vidya Academy Of Science and Technology, Thrissur**. My journey in tech is driven by a profound love for **Coding** and solving complex problems. I am constantly exploring new technologies and building projects to hone my skills.
-            </p>
-            <p>
-                *Let's build something amazing together!*
-            </p>
+            <div class="container">
+                <h2>About Me 🌸</h2>
+                <p>
+                    Currently pursuing Computer Science and Engineering at the **Vidya Academy Of Science and Technology, Thrissur**. I am driven by the sheer joy of **Coding**. Whether it's optimizing algorithms or building interactive projects, I love the problem-solving journey that technology offers.
+                </p>
+                <p>
+                    My goal is to blend strong technical foundations (DSA, C/C++) with practical application in modern software development. I'm always looking for opportunities to contribute and learn!
+                </p>
+            </div>
         </section>
-
-        <hr>
 
         <section id="skills" class="content-section">
-            <h2>Core Skills 💻</h2>
-            <div class="skills-grid">
-                <div class="skill-card">C++</div>
-                <div class="skill-card">Python</div>
-                <div class="skill-card">Data Structures & Algorithms (DSA)</div>
-                <div class="skill-card">HTML & CSS</div>
-                <div class="skill-card">... (Add more technologies like Java, JavaScript, etc.)</div>
+            <div class="container">
+                <h2>Core Competencies 💻</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">C / C++</div>
+                    <div class="skill-card">Data Structures & Algorithms (DSA)</div>
+                    <div class="skill-card">Python</div>
+                    <div class="skill-card">HTML & CSS</div>
+                    <div class="skill-card">Git & GitHub</div>
+                    <div class="skill-card">Operating Systems Concepts</div>
+                    <div class="skill-card">Database Management (SQL)</div>
+                    <div class="skill-card">... (Add frameworks/libraries like React, Django, etc.)</div>
+                </div>
             </div>
         </section>
 
-        <hr>
-
         <section id="projects" class="content-section">
-            <h2>My Projects ✨</h2>
-            <div class="project-card">
-                <h3>Project Title One</h3>
-                <p>A brief description of your project and the technologies used (e.g., Python web scraper or a C++ DSA implementation).</p>
-                <a href="link-to-github-repo" target="_blank">View Code</a>
+            <div class="container">
+                <h2>Featured Projects ✨</h2>
+                <div class="project-card">
+                    <h3>DSA Visualizer Tool</h3>
+                    <p>A web-based application demonstrating how sorting and searching algorithms work in real-time. Built using JavaScript and visualizing the steps with clear, graphical representation.</p>
+                    <a href="https://github.com/yourusername/dsa-project" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3>College Event Management System</h3>
+                    <p>A full-stack system designed to manage registrations, schedules, and results for college technical events. Focus was on secure login and robust database design.</p>
+                    <a href="https://github.com/yourusername/event-management" target="_blank">View on GitHub</a>
+                </div>
+                <!-- Add more project cards here! -->
             </div>
-            <div class="project-card">
-                <h3>Project Title Two</h3>
-                <p>A brief description of your project and the technologies used.</p>
-                <a href="link-to-github-repo" target="_blank">View Code</a>
-            </div>
-            </section>
-
-        <hr>
+        </section>
 
         <section id="contact" class="content-section">
-            <h2>Get In Touch ✉️</h2>
-            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-            <div class="social-links">
-                <a href="mailto:your.email@example.com">Email</a> | 
-                <a href="link-to-your-linkedin" target="_blank">LinkedIn</a> | 
-                <a href="link-to-your-github" target="_blank">GitHub</a>
+            <div class="container">
+                <h2>Get In Touch ✉️</h2>
+                <p>I am actively seeking internship opportunities and collaborations. Let's connect!</p>
+                <div class="social-links">
+                    <a href="mailto:your.email@example.com">Email</a> 
+                    | 
+                    <a href="link-to-your-linkedin" target="_blank">LinkedIn</a> 
+                    | 
+                    <a href="link-to-your-github" target="_blank">GitHub</a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Niharika K Thilak. Designed with 💖 and Code.</p>
+        <p>&copy; 2024 Niharika K Thilak. Crafted with Code & Passion.</p>
     </footer>
 </body>
 </html>
+
